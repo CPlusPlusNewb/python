@@ -1,0 +1,10 @@
+Assignment 
+2
+area
+8
+3 * ((6 + 2) /2)
+The number is: 14
+x = 45 x = x ** 2
+12
+3
+4

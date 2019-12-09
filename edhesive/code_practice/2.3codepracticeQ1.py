@@ -1,0 +1,10 @@
+# d(dividend), q(quotent), r(remainder)
+n = int(input("Enter the numerator: "))
+d = int(input("Enter the divisor: "))
+
+q = int(n / d)
+r = int(n % d)
+print ("quotient", end = " = ")
+print (q)
+print ("remainder", end = " = ")
+print (r)
