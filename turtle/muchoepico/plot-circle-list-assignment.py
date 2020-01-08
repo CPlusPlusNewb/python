@@ -38,9 +38,9 @@ def grid(t):
 	    y = y + 50
     specialstuff.line_wide(0, 400, 400, '#000000', t)
     specialstuff.line_long(400, 0, 400, '#000000', 270, t)
-    specialstuff.text(-165, 410, 'Circle Circumference and Diameter Plot', '#00ff00', 25, 'underline bold', 'left', t)
-    specialstuff.text(-45, 10, 'C\ni\nr\nc\nu\nm\nf\ne\nr\ne\nn\nc\ne', '#00ff00', 18, 'bold', 'left', t)
-    specialstuff.text(200, -40, 'D i a m e t e r', '#00ff00', 18, 'bold', 'center', t)
+    specialstuff.text(-165, 410, 'Circle Circumference and Diameter Plot', '#00ff00', 25, 'Verdana', 'underline bold', 'left', t)
+    specialstuff.text(-45, 10, 'C\ni\nr\nc\nu\nm\nf\ne\nr\ne\nn\nc\ne', '#00ff00', 18, 'Verdana', 'bold', 'left', t)
+    specialstuff.text(200, -40, 'D i a m e t e r', '#00ff00', 18, 'Verdana', 'bold', 'center', t)
     t.hideturtle()
     t.penup()
 
