@@ -5,8 +5,8 @@ def penupsetxy(xcord, ycord, daturtle):
 	daturtle.sety(ycord)
 	daturtle.pendown()
 
-def text(x, y, inputtxt, color, font_size, style, alignment, daturtle):
-	style = ('Verdana', font_size, style)
+def text(x, y, inputtxt, color, font_size, style, font, alignment, daturtle):
+	style = (font, font_size, style)
 	daturtle.color(color)
 	penupsetxy(x, y, daturtle)
 	daturtle.write(inputtxt, align=alignment, font=style)
