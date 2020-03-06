@@ -24,6 +24,7 @@ def check_for_installs_coltext():
         error('SUCCESS', 'Installed python3-termcolor', 'green', False)
 
 def error(problem, text2, color, blink):#this is mucho epico
+    # \/ THIS IS PROBABLY SUPER INEFFICIENT, BUT IDC REALLY
     check_for_installs_coltext()
     from colorama import Fore, Back, Style 
     from termcolor import colored, cprint 
