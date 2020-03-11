@@ -1,3 +1,5 @@
+# almost all code from preston, minus the webserver stuff from mr.coleman / icebowl,
+#  and some modifications to that code from noah mcgee. Thanks to them for help
 import http.server
 import socketserver
 import os 
@@ -41,35 +43,39 @@ def bigline_seperator():
 
 def main():
     try:
-        PORT = input("What Port would you like to use?: ")
-        PORT = int(PORT)
-    except ValueError as e:
-        error('ERROR', 'ValueError: Please enter a number, not text', 'red', True)
-        main()
-    path = '.'
-    bigline_seperator()
-    error('LIST', 'These are the folders: ', 'green', False)
-    files = os.listdir(path)
-    #this finds all folders, or anything that doesn't have a period
-    for name in files:
-        if '.' in name: 
-            print ('', end="")
-        else:
-            print(name)
-    bigline_seperator()
-    webroot = input("What folder to use as web root?: ")
-    try:
-        web_dir = os.path.join(os.path.dirname(__file__), webroot)
-        os.chdir(web_dir)#web root
-        Handler = http.server.SimpleHTTPRequestHandler
-        httpd = socketserver.TCPServer(("", PORT), Handler)
-        print("serving at port", PORT)
-        print("Webroot is "+webroot+'/')
-        httpd.serve_forever()
-        error('SUCCESS', 'setup was successful')
-    except FileNotFoundError as e:
-        error('ERROR', "FileNotFoundError: that folder does't exsist", 'red', True)
-        main()
+        try:
+            PORT = input("What Port would you like to use?: ")
+            PORT = int(PORT)
+        except ValueError as e:
+            error('ERROR', 'ValueError: Please enter a number, not text', 'red', True)
+            main()
+        path = '.'
+        bigline_seperator()
+        error('LIST', 'These are the folders: ', 'green', False)
+        files = os.listdir(path)
+        #this finds all folders, or anything that doesn't have a period
+        for name in files:
+            if '.' in name: 
+                print ('', end="")
+            else:
+                print(name)
+        bigline_seperator()
+        webroot = input("What folder to use as web root?: ")
+        try:
+            web_dir = os.path.join(os.path.dirname(__file__), webroot)
+            os.chdir(web_dir)#web root
+            Handler = http.server.SimpleHTTPRequestHandler
+            httpd = socketserver.TCPServer(("", PORT), Handler)
+            print("serving at port", PORT)
+            print("Webroot is "+webroot+'/')
+            httpd.serve_forever()
+            error('SUCCESS', 'setup was successful')
+        except FileNotFoundError as e:
+            error('ERROR', "FileNotFoundError: that folder does't exsist", 'red', True)
+            exit()
+    except OSError as e:
+        error('ERROR', "OSError: Program will now exit", 'red', True)
+        exit()
 
 #error('Success', 'Installed python3-colorama', 'green', False)
 #error('Success', 'Installed python3-termcolor', 'green', False)
