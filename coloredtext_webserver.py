@@ -86,16 +86,26 @@ def check_for_installs():
     try:
         import colorama
     except ImportError as e:
-        bashcmd('sudo apt install python3-colorama')
-        bashcmd('clear')
-        installed_colorama = True
+        try:
+            bashcmd('sudo apt install python3-colorama')
+            bashcmd('clear')
+            installed_colorama = True
+        except ModuleNotFoundError as e:
+            bashcmd('sudo pip3 install colorama')
+            bashcmd('clear')
+            installed_colorama = True
 
     try:
         import termcolor
     except ImportError as e:
-        bashcmd('sudo apt install python3-termcolor')
-        bashcmd('clear')
-        installed_termcolor = True
+        try:
+            bashcmd('sudo apt install python3-termcolor')
+            bashcmd('clear')
+            installed_termcolor = True
+        except ModuleNotFoundError as e:
+            bashcmd('sudo pip3 install termcolor')
+            bashcmd('clear')
+            installed_colorama = True
 
     if (installed_colorama == True):
         error('SUCCESS', 'Installed python3-colorama', 'green', False)
