@@ -6,7 +6,40 @@ import os
 import sys
 bashcmd = os.system
 
+def check_for_installs():
+    installed_colorama = False
+    installed_termcolor = False
+    try:
+        import colorama
+    except ImportError as e:
+        try:
+            bashcmd('sudo apt install python3-colorama')
+            bashcmd('clear')
+            installed_colorama = True
+        except ModuleNotFoundError as e:
+            bashcmd('sudo pip3 install colorama')
+            bashcmd('clear')
+            installed_colorama = True
+
+    try:
+        import termcolor
+    except ImportError as e:
+        try:
+            bashcmd('sudo apt install python3-termcolor')
+            bashcmd('clear')
+            installed_termcolor = True
+        except ModuleNotFoundError as e:
+            bashcmd('sudo pip3 install termcolor')
+            bashcmd('clear')
+            installed_colorama = True
+
+    if (installed_colorama == True):
+        error('SUCCESS', 'Installed python3-colorama', 'green', False)
+    if (installed_termcolor == True):
+        error('SUCCESS', 'Installed python3-termcolor', 'green', False)
+
 def error(problem, text2, color, blink):#this is mucho epico
+    check_for_installs()
     from colorama import Fore, Back, Style 
     from termcolor import colored, cprint 
     text1 = ''
@@ -79,38 +112,6 @@ def main():
 
 #error('Success', 'Installed python3-colorama', 'green', False)
 #error('Success', 'Installed python3-termcolor', 'green', False)
-
-def check_for_installs():
-    installed_colorama = False
-    installed_termcolor = False
-    try:
-        import colorama
-    except ImportError as e:
-        try:
-            bashcmd('sudo apt install python3-colorama')
-            bashcmd('clear')
-            installed_colorama = True
-        except ModuleNotFoundError as e:
-            bashcmd('sudo pip3 install colorama')
-            bashcmd('clear')
-            installed_colorama = True
-
-    try:
-        import termcolor
-    except ImportError as e:
-        try:
-            bashcmd('sudo apt install python3-termcolor')
-            bashcmd('clear')
-            installed_termcolor = True
-        except ModuleNotFoundError as e:
-            bashcmd('sudo pip3 install termcolor')
-            bashcmd('clear')
-            installed_colorama = True
-
-    if (installed_colorama == True):
-        error('SUCCESS', 'Installed python3-colorama', 'green', False)
-    if (installed_termcolor == True):
-        error('SUCCESS', 'Installed python3-termcolor', 'green', False)
 
 if (__name__ == "__main__"):
     check_for_installs()
