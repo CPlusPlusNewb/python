@@ -1,7 +1,9 @@
-bool gotkeys = False
-bool sound_alarm = False
-bool gotjacketorsomethingelse = False
-bool dooropen
+#include robot
+
+gotkeys = False
+sound_alarm = False
+gotjacketorsomethingelse = False
+dooropen
 
 def getkeys():
     #some code
